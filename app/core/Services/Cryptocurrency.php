@@ -5,17 +5,18 @@ namespace Griff\Services;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Griff\Cryptocompare;
 
 class Cryptocurrency extends Command
 {
   protected function configure()
   {
     $this->setName('services:cryptocurrencies');
-    $this->setDescription('Check the prices of various cryptocurrencies and send a notification');
+    $this->setDescription('Check the prices of various cryptocurrencies and send notifications');
   }
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    $output->writeln('Here');
+    \Symfony\Component\VarDumper\VarDumper::dump(Cryptocompare::getEtherPrice()); exit;
   }
 }
