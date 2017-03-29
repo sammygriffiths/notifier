@@ -24,7 +24,6 @@ class Cryptocompare
   }
 
   public static function getPrice($cryptocurrency) {
-    $price = self::getPrices($cryptocurrency)['GBP'];
-    return (float) number_format($price, 2);
+    return self::getPrices($cryptocurrency)['GBP'];
   }
 }
