@@ -23,11 +23,8 @@ class Cryptocompare
     return json_decode($result, true);
   }
 
-  public static function getEtherPrice() {
-    return self::getPrices('ETH')['GBP'];
-  }
-
-  public static function getBitcoinPrice() {
-    return number_format(self::getPrices('BTC')['GBP'], 2);
+  public static function getPrice($cryptocurrency) {
+    $price = self::getPrices($cryptocurrency)['GBP'];
+    return (float) number_format($price, 2);
   }
 }

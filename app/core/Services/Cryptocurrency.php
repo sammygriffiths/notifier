@@ -17,6 +17,6 @@ class Cryptocurrency extends Command
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    \Symfony\Component\VarDumper\VarDumper::dump(Cryptocompare::getEtherPrice()); exit;
+    \Symfony\Component\VarDumper\VarDumper::dump(Cryptocompare::getPrice('ETH')); exit;
   }
 }
