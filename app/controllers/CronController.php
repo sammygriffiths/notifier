@@ -4,12 +4,11 @@ namespace Griff;
 
 use Symfony\Component\HttpFoundation\Request;
 
-class DashboardController extends CoreController
+class CronController extends CoreController
 {
 
     public function index(Request $request, Application $app) {
-
-        return $app['twig']->render('dashboard.html.twig');
+      echo 'here'; exit;
     }
 
 }
