@@ -3,6 +3,7 @@
 namespace Griff;
 
 use \GuzzleHttp\Client as GuzzleClient;
+use Symfony\Component\Console\Output\OutputInterface;
 
 class Pushover
 {
@@ -52,6 +53,25 @@ class Pushover
     $this->sent_at = date('Y-m-d H:i:s');
 
     return $status;
+  }
+
+  public function outputToCli(OutputInterface $output) {
+    if ($this->sent_at === false) {
+      throw new \Exception('Notification has not yet been sent');
+    }
+
+    $message = [
+      '',
+      '===================',
+      'Notification Sent',
+      $this->sent_at,
+      '===================',
+      $this->params['title'],
+      $this->params['message'],
+      '===================',
+      '',
+    ];
+    $output->writeln($message);
   }
 
 }
