@@ -19,6 +19,15 @@ class Cryptocurrency extends Command
 
   protected function execute(InputInterface $input, OutputInterface $output)
   {
-    \Symfony\Component\VarDumper\VarDumper::dump(Cryptocompare::getPrice('ETH')); exit;
+    $pushover = new Pushover(Config::get('pushover_api_key'), Config::get('pushover_user_key'));
+
+    $pushover->setTitle('Price of Ether');
+    $pushover->setMessage(Cryptocompare::getPrice('ETH'));
+
+    if (!$pushover->send()) {
+      throw new \Exception('There was an error sending Pushover notification');
+    }
+
+    $output->writeln('Notification sent at '.date('Y-m-d H:i:s'));
   }
 }

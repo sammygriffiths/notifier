@@ -6,14 +6,14 @@ use \GuzzleHttp\Client as GuzzleClient;
 
 class Cryptocompare
 {
-  const URL = 'https://min-api.cryptocompare.com/data/price';
+  const API_URL = 'https://min-api.cryptocompare.com/data/price';
 
   private static function getPrices($cryptocurrency, array $currencies = ['GBP']) {
     $client = new GuzzleClient;
 
     $currencies = implode(',', $currencies);
 
-    $result = $client->request('GET', self::URL, [
+    $result = $client->request('GET', self::API_URL, [
       'query' => [
         'fsym'  => $cryptocurrency,
         'tsyms' => $currencies
