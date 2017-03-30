@@ -25,7 +25,7 @@ class Cryptocurrency extends Command
     $pushover->setMessage(Cryptocompare::getPrice('ETH'));
 
     if ($pushover->send()) {
-      $output->writeln('Notification sent at '.date('Y-m-d H:i:s'));
+      $output->writeln('Notification sent at '.$pushover->sent_at);
     }
 
   }
