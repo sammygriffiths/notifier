@@ -6,6 +6,8 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Griff\Cryptocompare;
+use Griff\Pushover;
+use Griff\Config;
 
 class Cryptocurrency extends Command
 {
