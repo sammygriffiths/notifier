@@ -42,7 +42,13 @@ class Pushover
     ])->getBody();
     $result = json_decode($result, true);
 
-    return (bool) $result['status'];
+    $status = (bool) $result['status'];
+
+    if (!$status){
+      throw new \Exception('There was an error sending Pushover notification');
+    }
+
+    return $status;
   }
 
 }
